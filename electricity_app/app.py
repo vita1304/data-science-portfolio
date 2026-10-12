@@ -1,3 +1,4 @@
+import os
 from __future__ import annotations
 import streamlit as st
 import numpy as np
@@ -6,8 +7,13 @@ import matplotlib.pyplot as plt
 from joblib import load
 
 def load_model_and_data():
-    model = load("electricity_poly_ridge_model.joblib")
-    df = load("clean_energy_data.joblib")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    model_path = os.path.join(current_dir, "electricity_poly_ridge_model.joblib")
+    data_path = os.path.join(current_dir, "clean_energy_data.joblib")
+
+    model = load(model_path)
+    df = load(data_path)
     return model, df
 
 def create_streamlit_app():
