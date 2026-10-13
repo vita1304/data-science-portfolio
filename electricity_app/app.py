@@ -83,7 +83,7 @@ def create_streamlit_app():
         col1, col2, col3 = st.columns(3)
         col1.metric("Очікувана ціна е/е", f"{pred_mwh:.2f} € / MWh")
         col2.metric("Еквівалент у грн", f"{pred_uah_kw:.2f} грн / кВт·год")
-        col3.metric("Базовий курс євро", f"{current_eur_rate:.2f} грн/€")
+        col3.metric("Розрахунковий курс", f"{eur_uah_val:.2f} грн/€")
 
         fig, ax = plt.subplots(figsize=(10, 5))
 
