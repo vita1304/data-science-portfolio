@@ -17,7 +17,8 @@ def load_clean_data(csv_path: str = "procurement_clean.csv") -> pd.DataFrame:
 
 
 def train_polynomial_ridge_model(X: pd.DataFrame, y: pd.Series):
-    candidate_alphas = [0.01, 0.1, 1.0, 5.0, 10.0, 50.0, 100.0, 500.0]
+    # Починаємо від 5.0, щоб придушити паразитарні від'ємні параболи
+    candidate_alphas = [5.0, 10.0, 15.0, 20.0, 30.0, 50.0]
     
     regressor = make_pipeline(
         PolynomialFeatures(degree=2, include_bias=False),
