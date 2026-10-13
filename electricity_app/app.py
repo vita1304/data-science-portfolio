@@ -78,8 +78,7 @@ def create_streamlit_app():
 
         pred_mwh = float(model.predict(input_data)[0])
 
-        current_eur_rate = float(df["EUR_UAH"].iloc[-1])
-        pred_uah_kw = (pred_mwh * current_eur_rate) / 1000
+        pred_uah_kw = (pred_mwh * eur_uah_val) / 1000
 
         col1, col2, col3 = st.columns(3)
         col1.metric("Очікувана ціна е/е", f"{pred_mwh:.2f} € / MWh")
